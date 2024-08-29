@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sliding Alert</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9; /* Almost white background */
+      }
+
+      button {
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .alert {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        bottom: -100px; /* Start off-screen */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white; /* Background color for the message part */
+        color: black;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: bottom 0.5s ease-in-out;
+      }
+
+      .alert-icon {
+        background-color: #04aa6d; /* Green color */
+        color: white;
+        padding: 15px;
+        border-radius: 5px 0 0 5px; /* Rounded corners for the left side */
+        margin-right: 10px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .alert-message {
+        font-size: 16px;
+        background-color: white; /* White background for the message part */
+        padding: 10px;
+        border-radius: 0 5px 5px 0; /* Rounded corners for the right side */
+      }
+
+      /* Slide in animation */
+      body.show-alert .alert {
+        bottom: 20px; /* Slide to visible position */
+      }
+    </style>
+  </head>
+  <body>
+    <button id="showAlertButton">Show Alert</button>
+    <div class="alert" id="alertBox">
+      <div class="alert-icon">
+        ✔
+        <!-- Checkmark icon -->
+      </div>
+      <div class="alert-message">This is a success alert message!</div>
+    </div>
+    <script>
+      let trigger = false
+      document
+        .getElementById('showAlertButton')
+        .addEventListener('click', function () {
+          if (!trigger) document.body.classList.add('show-alert')
+          else document.body.classList.remove('show-alert')
+          trigger = !trigger
+        })
+    </script>
+  </body>
+</html>
